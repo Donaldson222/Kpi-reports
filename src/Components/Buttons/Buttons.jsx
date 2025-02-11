@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select, MenuItem, Button } from '@mui/material';
-import FilterListIcon from '@mui/icons-material/FilterList';
+
 import { CiExport } from "react-icons/ci";
 
 const Buttons = ({ recordCount, setFilter, data }) => {
@@ -14,17 +14,17 @@ const Buttons = ({ recordCount, setFilter, data }) => {
             return;
         }
 
-        // Convert data to CSV format
-        const headers = Object.keys(data[0]).join(","); // Get column headers
+        
+        const headers = Object.keys(data[0]).join(","); 
         const csvRows = data.map(row => 
             Object.values(row)
-                .map(value => `"${value}"`) // Ensure values are wrapped in quotes
+                .map(value => `"${value}"`) 
                 .join(",")
         );
         
         const csvContent = [headers, ...csvRows].join("\n");
 
-        // Create a Blob and trigger download
+       
         const blob = new Blob([csvContent], { type: "text/csv" });
         const url = URL.createObjectURL(blob);
         
@@ -53,11 +53,11 @@ const Buttons = ({ recordCount, setFilter, data }) => {
         }}>
             <h4 style={{ margin: 0, color: '#5F6D8C' }}>{recordCount} KPI Reports</h4>
             
-            {/* Buttons Container */}
+           
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                 <Select
                     defaultValue="All"
-                    onChange={handleFilterChange} // Update filter state
+                    onChange={handleFilterChange} 
                     style={{
                         borderRadius: '35px',
                         marginRight: '10px',
@@ -69,7 +69,7 @@ const Buttons = ({ recordCount, setFilter, data }) => {
                     <MenuItem value="Unresolved">Unresolved</MenuItem>
                 </Select>
 
-                {/* Export Button */}
+               
                 <Button 
                     onClick={handleExport} 
                     style={{ 
@@ -86,7 +86,7 @@ const Buttons = ({ recordCount, setFilter, data }) => {
                     <CiExport size={20} />
                 </Button>
 
-                {/* Filter Button */}
+              
                 <Button 
                     style={{ 
                         backgroundColor: '#E8FFEC', 
