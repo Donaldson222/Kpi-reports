@@ -20,7 +20,7 @@ function App() {
       <Navbar />
       <div style={{ width: '95%', margin: 'auto', marginLeft: '20px' }}>
 
-        
+        <h2>KPI Reports</h2>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
           <Counters data={filteredData} />
         </div>
