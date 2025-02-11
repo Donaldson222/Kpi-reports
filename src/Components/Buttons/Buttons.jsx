@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Select, MenuItem } from '@mui/material';
+
 import { Button } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
@@ -57,7 +59,21 @@ const Buttons = ({ recordCount }) => {
             <h4 style={{ margin: 0, color: '#5F6D8C' }}>{recordCount} KPI Reports</h4>
             
             {/* Buttons Container */}
-            <div style={{ display: 'flex', gap: '10px' }}>
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <Select
+                    defaultValue="All"
+                    style={{
+                        borderRadius: '35px',
+                        marginRight: '10px',
+                        width: '200px',
+                        
+                    }}
+                >
+                    <MenuItem value="All">All</MenuItem>
+                    <MenuItem value="Resolved">Resolved</MenuItem>
+                    <MenuItem value="Unresolved">Unresolved</MenuItem>
+                </Select>
+
                 {/* Import Button */}
                 <Button 
                     onClick={handleExport} 
@@ -74,6 +90,7 @@ const Buttons = ({ recordCount }) => {
                 >
                     <CiExport size={20} />
                 </Button>
+
 
                 {/* Filter Button */}
                 <Button 

@@ -14,7 +14,13 @@ function App() {
       
         <Navbar />
       
-      <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+      <div style={{  width: '95%', 
+                    margin: 'auto', 
+                    backgroundColor: 'white', 
+                    marginLeft: '20px', 
+                    borderRadius: '15px', 
+                    padding: '20px', 
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'  }}>
         <Buttons recordCount={data.length} />
         <KpiTable />
       </div>
