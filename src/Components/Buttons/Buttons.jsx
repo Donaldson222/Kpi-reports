@@ -3,13 +3,38 @@ import { Select, MenuItem, Button } from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { CiExport } from "react-icons/ci";
 
-const Buttons = ({ recordCount, setFilter }) => {
+const Buttons = ({ recordCount, setFilter, data }) => {
     const handleFilterChange = (event) => {
         setFilter(event.target.value);
     };
 
     const handleExport = () => {
-        // Export logic
+        if (!data || data.length === 0) {
+            alert("No records available to export!");
+            return;
+        }
+
+        // Convert data to CSV format
+        const headers = Object.keys(data[0]).join(","); // Get column headers
+        const csvRows = data.map(row => 
+            Object.values(row)
+                .map(value => `"${value}"`) // Ensure values are wrapped in quotes
+                .join(",")
+        );
+        
+        const csvContent = [headers, ...csvRows].join("\n");
+
+        // Create a Blob and trigger download
+        const blob = new Blob([csvContent], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "KPI_Reports.csv";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     };
 
     return (

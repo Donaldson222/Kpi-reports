@@ -18,7 +18,11 @@ function App() {
     <div style={{ display: 'flex', backgroundColor: '#EBEEF3', width: '100vw' }}>
       <Navbar />
       <div style={{ width: '95%', margin: 'auto', backgroundColor: 'white', marginLeft: '20px', borderRadius: '15px', padding: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-        <Buttons recordCount={filteredData.length} setFilter={setFilter} />
+        
+        {/* Pass filtered data to Buttons for exporting */}
+        <Buttons recordCount={filteredData.length} setFilter={setFilter} data={filteredData} />
+        
+        {/* Pass filtered data to KpiTable for display */}
         <KpiTable data={filteredData} />
       </div>
     </div>
