@@ -1,17 +1,9 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Checkbox, Box } from '@mui/material';
 
-const KpiTable = () => {
-   
-
-    const data = [
-        { consignCode: 'C001', consignee: 'John Doe', consignor: 'Company A', transporter: 'Transport Co.', driver: 'Alice', kpiName: 'Delivery Time', status: 'Resolved', targetDuration: '2 Days' },
-        { consignCode: 'C002', consignee: 'Jane Smith', consignor: 'Company B', transporter: 'Transport Co.', driver: 'Bob', kpiName: 'Delivery Time', status: 'Unresolved', targetDuration: '3 Days' },
-    ];
-
+const KpiTable = ({ data }) => {
     return (
         <div>
-            
             <TableContainer style={{ backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden', marginTop: '20px', marginLeft: '20px', marginRight: '20px', display: 'inline-block', verticalAlign: 'top' }}>
                 <Table>
                     <TableHead>
